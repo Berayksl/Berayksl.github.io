@@ -23,7 +23,7 @@ repository               : "Berayksl/Berayksl.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "Profile_pic.png"
   name             : "Sadik Bera Yuksel"
   pronouns         : # example: "she/her"  
   bio              : "Ph.D. Candidate in Computer Engineering"
