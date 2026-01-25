@@ -25,9 +25,9 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Sadik Bera Yuksel"
-  pronouns         : "he/him" # example: "she/her"  
+  pronouns         : # example: "she/her"  
   bio              : "Ph.D. Candidate in Computer Engineering"
-  location         : "Earth"
+  location         : "Boston, MA"
   employer         : "Northeastern University"
   uri              : # URL
   email            : "yuksel.sa@northeastern.edu" 
