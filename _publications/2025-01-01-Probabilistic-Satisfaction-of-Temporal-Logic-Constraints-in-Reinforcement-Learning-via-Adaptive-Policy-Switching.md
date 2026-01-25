@@ -1,6 +1,7 @@
 ---
 title: "Probabilistic Satisfaction of Temporal Logic Constraints in Reinforcement Learning via Adaptive Policy-Switching"
 collection: publications
+category: conferences
 permalink: /publication/2025-01-01-Probabilistic-Satisfaction-of-Temporal-Logic-Constraints-in-Reinforcement-Learning-via-Adaptive-Policy-Switching
 date: 2025-01-01
 venue: 'In the proceedings of Proceedings of the 7th Annual Learning for Dynamics &amp;amp; Control Conference'
