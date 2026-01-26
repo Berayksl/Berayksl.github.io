@@ -4,6 +4,7 @@ collection: publications
 category: conferences
 permalink: /publication/2025-01-01-Robust-Temporal-Logic-Planning-Under-Contingency-Constraints
 date: 2025-01-10
+experiment_video: "https://www.youtube.com/watch?v=1m2m6nuocjQ"
 authors: "Sadik Bera Yuksel, Azizollah Taheri, Yasin Yazicioglu, Derya Aksaray"
 venue: 'In the proceedings of IEEE 21st International Conference on Automation Science and Engineering (CASE)'
 ---
