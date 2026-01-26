@@ -44,8 +44,25 @@
 	  {% if post.authors %}
 	    <p>{{ post.authors }}</p>
 	  {% endif %}
+
 	  <p><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
-        {% elsif post.date %}
+
+	  {% if post.paperurl or post.experiment_video %}
+	    <p>
+	      {% if post.paperurl %}
+		<a href="{{ post.paperurl }}" target="_blank" rel="noopener">Paper</a>
+	      {% endif %}
+
+	      {% if post.paperurl and post.experiment_video %}
+		&nbsp;|&nbsp;
+	      {% endif %}
+
+	      {% if post.experiment_video %}
+		<a href="{{ post.experiment_video }}" target="_blank" rel="noopener">Experiment Video</a>
+	      {% endif %}
+	    </p>
+	  {% endif %}
+	{% elsif post.date %}
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
 
