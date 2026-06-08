@@ -7,6 +7,11 @@ author_profile: true
 
 {% include base_path %}
 
+{% assign current_university = nil %}
 {% for post in site.teaching reversed %}
+  {% if post.venue != current_university %}
+    {% assign current_university = post.venue %}
+    <h2>{{ current_university }}</h2><hr />
+  {% endif %}
   {% include archive-single.html %}
 {% endfor %}

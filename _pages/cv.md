@@ -5,7 +5,7 @@ permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
-redirect_to: /files/Bera_Yuksel_CV - (11.24.2025).pdf
+redirect_to: /files/Bera_Yuksel_CV_new.pdf
 ---
 
 {% include base_path %}

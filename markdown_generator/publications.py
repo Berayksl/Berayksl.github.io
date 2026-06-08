@@ -10,9 +10,9 @@
 
 # ## Data format
 # 
-# The TSV needs to have the following columns: pub_date, title, venue, excerpt, citation, site_url, and paper_url, with a header at the top. 
+# The TSV needs to have the following columns: pub_date, title, venue, excerpt, citation, site_url, paper_url, and optionally media_url, with a header at the top. 
 # 
-# - `excerpt` and `paper_url` can be blank, but the others must have values. 
+# - `excerpt`, `paper_url`, and `media_url` can be blank, but the others must have values. 
 # - `pub_date` must be formatted as YYYY-MM-DD.
 # - `url_slug` will be the descriptive part of the .md file and the permalink URL for the page about the paper. The .md file will be `YYYY-MM-DD-[url_slug].md` and the permalink will be `https://[yourdomain]/publications/YYYY-MM-DD-[url_slug]`
 
@@ -86,6 +86,10 @@ for row, item in publications.iterrows():
     
     if len(str(item.paper_url)) > 5:
         md += "\npaperurl: '" + item.paper_url + "'"
+
+    media_url = str(item.get("media_url", "")).strip()
+    if len(media_url) > 5:
+        md += "\nmedia: '" + media_url + "'"
     
     md += "\ncitation: '" + html_escape(item.citation) + "'"
     

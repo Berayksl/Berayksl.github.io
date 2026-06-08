@@ -1,0 +1,55 @@
+{% include base_path %}
+
+{% assign publication_media = post.media | default: post.header.teaser | default: site.teaser %}
+{% assign publication_title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+
+<div class="pub-card">
+  {% if publication_media %}
+    <div class="pub-card__media">
+      <img src={% if publication_media contains "://" %}"{{ publication_media }}"{% elsif publication_media contains "/" %}"{{ publication_media }}"{% else %}"{{ publication_media | prepend: "/images/" | prepend: base_path }}"{% endif %} alt="{{ post.title | escape }}" loading="lazy">
+    </div>
+  {% else %}
+    <div class="pub-card__placeholder" aria-hidden="true"></div>
+  {% endif %}
+
+  <div class="pub-card__body">
+    <h2 class="pub-card__title">
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}" target="_blank" rel="noopener">{{ publication_title }}</a>
+      {% elsif post.link %}
+        <a href="{{ post.link }}">{{ publication_title }}</a>
+      {% else %}
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ publication_title }}</a>
+      {% endif %}
+    </h2>
+
+    {% if post.authors %}
+      <p class="pub-card__authors">{{ post.authors }}</p>
+    {% endif %}
+
+    {% if post.venue %}
+      <p class="pub-card__venue"><em>{{ post.venue }}</em>{% if post.date %}, {{ post.date | date: "%Y" }}{% endif %}</p>
+    {% endif %}
+
+    <div class="pub-card__links">
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}" target="_blank" rel="noopener"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Paper</a>
+      {% endif %}
+      {% if post.experiment_video %}
+        <a href="{{ post.experiment_video }}" target="_blank" rel="noopener"><i class="fa fa-play" aria-hidden="true"></i>Video</a>
+      {% endif %}
+      {% if post.slidesurl %}
+        <a href="{{ post.slidesurl }}" target="_blank" rel="noopener"><i class="fa fa-slideshare" aria-hidden="true"></i>Slides</a>
+      {% endif %}
+      {% if post.bibtex %}
+        <a href="#" onclick="event.preventDefault(); var el=document.getElementById('bib-{{ post.slug | default: forloop.index }}'); el.style.display = el.style.display==='block' ? 'none' : 'block';"><i class="fas fa-quote-right" aria-hidden="true"></i> Cite</a>
+      {% elsif post.bibtexurl %}
+        <a href="{{ post.bibtexurl }}"><i class="fas fa-quote-right" aria-hidden="true"></i> Cite</a>
+      {% endif %}
+    </div>
+
+    {% if post.bibtex %}
+      <pre class="pub-card__bibtex" id="bib-{{ post.slug | default: forloop.index }}" style="display:none;">{{ post.bibtex }}</pre>
+    {% endif %}
+  </div>
+</div>

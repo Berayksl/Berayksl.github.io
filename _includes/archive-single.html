@@ -27,7 +27,9 @@
     {% endif %}
 
     <h2 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
+      {% if post.collection == 'teaching' %}
+        {{ title }}
+      {% elsif post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
         <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
@@ -39,29 +41,39 @@
     {% endif %}
 
         {% if post.collection == 'teaching' %}
-          <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p> {{ post.type }}{% if post.term %}, {{ post.term }}{% endif %} </p>
 	{% elsif post.collection == 'publications' %}
-	  {% if post.authors %}
-	    <p>{{ post.authors }}</p>
-	  {% endif %}
+    {% assign publication_media = post.media | default: post.header.teaser %}
+    <div class="publication__content">
+      {% if publication_media %}
+        <div class="publication__media">
+          <img src={% if publication_media contains "://" %}"{{ publication_media }}"{% elsif publication_media contains "/" %}"{{ publication_media }}"{% else %}"{{ publication_media | prepend: "/images/" | prepend: base_path }}"{% endif %} alt="{{ post.title | escape }}" loading="lazy">
+        </div>
+      {% endif %}
+      <div class="publication__body">
+        {% if post.authors %}
+    <p>{{ post.authors }}</p>
+        {% endif %}
 
-	  <p><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
+        <p><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
 
-	  {% if post.paperurl or post.experiment_video %}
-	    <p>
-	      {% if post.paperurl %}
-		<a href="{{ post.paperurl }}" target="_blank" rel="noopener">Paper</a>
-	      {% endif %}
+        {% if post.paperurl or post.experiment_video %}
+    <p>
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}" target="_blank" rel="noopener">Paper</a>
+      {% endif %}
 
-	      {% if post.paperurl and post.experiment_video %}
-		&nbsp;|&nbsp;
-	      {% endif %}
+      {% if post.paperurl and post.experiment_video %}
+        &nbsp;|&nbsp;
+      {% endif %}
 
-	      {% if post.experiment_video %}
-		<a href="{{ post.experiment_video }}" target="_blank" rel="noopener">Experiment Video</a>
-	      {% endif %}
-	    </p>
-	  {% endif %}
+      {% if post.experiment_video %}
+        <a href="{{ post.experiment_video }}" target="_blank" rel="noopener">Experiment Video</a>
+      {% endif %}
+    </p>
+        {% endif %}
+      </div>
+    </div>
 	{% elsif post.date %}
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}

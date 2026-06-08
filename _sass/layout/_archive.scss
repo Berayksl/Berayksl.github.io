@@ -66,6 +66,41 @@
   }
 }
 
+.publication__content {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.publication__media {
+  flex: 0 0 220px;
+  max-width: 220px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+  }
+}
+
+.publication__body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@include breakpoint($small) {
+  .publication__content {
+    flex-direction: column;
+  }
+
+  .publication__media {
+    flex-basis: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
 .archive__item-teaser {
   border-radius: $border-radius;
   overflow: hidden;

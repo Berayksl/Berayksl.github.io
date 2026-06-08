@@ -5,8 +5,22 @@ category: conferences
 permalink: /publication/2025-01-01-Robust-Temporal-Logic-Planning-Under-Contingency-Constraints
 date: 2025-01-10
 experiment_video: "https://www.youtube.com/watch?v=1m2m6nuocjQ"
+paperurl: https://ieeexplore.ieee.org/abstract/document/11163815
 authors: "Sadik Bera Yuksel, Azizollah Taheri, Yasin Yazicioglu, Derya Aksaray"
 venue: 'In the proceedings of IEEE 21st International Conference on Automation Science and Engineering (CASE)'
+media: /images/publications/robust_TL_planning.gif
+bibtex: |
+    @INPROCEEDINGS{11163815,
+    author={Yüksel, Sadık Bera and Taheri, Azizollah and Yazıcıoğlu, Yasin and Aksaray, Derya},
+    booktitle={2025 IEEE 21st International Conference on Automation Science and Engineering (CASE)}, 
+    title={Robust Temporal Logic Planning Under Contingency Constraints}, 
+    year={2025},
+    volume={},
+    number={},
+    pages={30-36},
+    keywords={Computational modeling;Contingency management;Stochastic processes;Optimal control;Switches;Planning;Safety;Logic;Robots;Faces},
+    doi={10.1109/CASE58245.2025.11163815}}'
+
 ---
 [Access paper here](https://ieeexplore.ieee.org/abstract/document/11163815){:target="_blank"}
 
